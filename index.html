@@ -1,0 +1,3534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIJAN ARYAL | Digital Visionary & Tech Innovator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+        :root {
+            --primary: #7C3AED;
+            --primary-glow: rgba(124, 58, 237, 0.8);
+            --secondary: #00D4AA;
+            --secondary-glow: rgba(0, 212, 170, 0.8);
+            --accent: #FF6B9D;
+            --accent-glow: rgba(255, 107, 157, 0.8);
+            --cyber-blue: #00F3FF;
+            --matrix-green: #00FF9D;
+            --dark: #0A0A0F;
+            --darker: #050508;
+            --light: #F0F5FF;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition-slow: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-glow: 0 0 40px var(--primary-glow);
+            --shadow-glow-2: 0 0 80px var(--secondary-glow);
+        }
+
+        .light-theme {
+            /* Only change text/logo colors, keep background dark */
+            --primary: #0066FF;
+            --primary-glow: rgba(0, 102, 255, 0.6);
+            --secondary: #00B894;
+            --secondary-glow: rgba(0, 184, 148, 0.6);
+            --accent: #FF6B9D;
+            --accent-glow: rgba(255, 107, 157, 0.6);
+            --cyber-blue: #0066FF;
+            --matrix-green: #00B894;
+            /* Keep background colors unchanged */
+            --dark: #0A0A0F;
+            --darker: #050508;
+            --light: #FFFFFF;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Advanced Custom Cursor - IMPROVED DESIGN */
+        .cursor {
+            width: 8px;
+            height: 8px;
+            background: var(--cyber-blue);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 100001;
+            transition: transform 0.1s ease-out, width 0.2s, height 0.2s;
+            filter: drop-shadow(0 0 6px var(--cyber-blue));
+            box-shadow: 
+                0 0 12px var(--cyber-blue),
+                0 0 24px rgba(0, 243, 255, 0.4),
+                inset 0 0 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .cursor-follower {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--matrix-green);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 100000;
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0.6;
+            filter: drop-shadow(0 0 8px var(--matrix-green));
+            box-shadow: 
+                0 0 12px rgba(0, 255, 157, 0.3),
+                inset 0 0 8px rgba(0, 255, 157, 0.1);
+        }
+
+        .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--light);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 100002;
+            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+        
+        .cursor.hover {
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+        }
+        
+        .cursor-follower.hover {
+            width: 48px;
+            height: 48px;
+            border-color: var(--primary);
+            opacity: 0.8;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            min-height: 100vh;
+            cursor: none !important;
+            position: relative;
+        }
+        
+        /* Scroll Indicator - Small Mouse Icon */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .scroll-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .scroll-mouse {
+            width: 20px;
+            height: 30px;
+            border: 2px solid var(--cyber-blue);
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            padding-top: 6px;
+        }
+        
+        .scroll-mouse::before {
+            content: '';
+            width: 4px;
+            height: 6px;
+            background: var(--cyber-blue);
+            border-radius: 2px;
+            animation: scrollMouse 1.5s infinite;
+        }
+        
+        @keyframes scrollMouse {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(8px); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .scroll-text {
+            font-size: 10px;
+            color: var(--cyber-blue);
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 212, 170, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 90%, rgba(255, 107, 157, 0.1) 0%, transparent 50%);
+            z-index: -2;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(transparent 95%, rgba(0, 255, 157, 0.1) 100%),
+                linear-gradient(90deg, transparent 95%, rgba(0, 243, 255, 0.1) 100%);
+            background-size: 100px 100px, 100px 100px;
+            animation: matrixMove 20s linear infinite;
+        }
+
+        @keyframes matrixMove {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(100px) translateX(50px); }
+        }
+
+        /* Typewriter Effect */
+        .typewriter-container {
+            position: absolute;
+            top: 100px;
+            left: 5%;
+            z-index: 10;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .typewriter-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cyber-blue);
+            display: inline-block;
+            position: relative;
+            padding-right: 10px;
+        }
+
+        .typewriter-text::after {
+            content: '|';
+            position: absolute;
+            right: 0;
+            color: var(--matrix-green);
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: none;
+            z-index: 1001;
+            transition: var(--transition);
+        }
+/* Simple Horizontal Shadow Scan */
+.horizontal-shadow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.2) 10%,
+        rgba(0, 0, 0, 0.3) 50%,
+        rgba(0, 0, 0, 0.2) 90%,
+        transparent 100%
+    );
+    animation: horizontalScan 10s ease-in-out infinite;
+    opacity: 0.2;
+    mix-blend-mode: overlay;
+}
+
+@keyframes horizontalScan {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Glow Pulse */
+.glow-pulse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(124, 58, 237, 0.1) 0%,
+        transparent 50%
+    );
+    opacity: 0.3;
+    transition: background 0.3s;
+}
+.elite-cursor,
+.elite-cursor-dot{
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 100000;
+  transform: translate(-50%, -50%);
+}
+
+.elite-cursor{
+  width: 28px;
+  height: 28px;
+  border: 2px solid #00f3ff;
+  border-radius: 50%;
+}
+
+.elite-cursor-dot{
+  width: 6px;
+  height: 6px;
+  background: #00f3ff;
+  border-radius: 50%;
+}
+
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--cyber-blue);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Quantum Opening Animation */
+        .quantum-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .quantum-sphere {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            perspective: 1000px;
+            margin-bottom: 40px;
+        }
+
+        .quantum-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            animation: quantumSpin 3s linear infinite;
+        }
+
+        .ring-1 { 
+            border-top: 3px solid var(--primary);
+            animation-delay: 0s;
+        }
+        .ring-2 { 
+            border-right: 3px solid var(--secondary);
+            animation-delay: 0.5s;
+        }
+        .ring-3 { 
+            border-bottom: 3px solid var(--accent);
+            animation-delay: 1s;
+        }
+        .ring-4 { 
+            border-left: 3px solid var(--cyber-blue);
+            animation-delay: 1.5s;
+        }
+
+        @keyframes quantumSpin {
+            0% { transform: rotateX(60deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(60deg) rotateY(360deg) rotateZ(360deg); }
+        }
+
+        .loading-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+/* ===== MOBILE FIT FIX (ADD ONLY – NO INTERFERENCE) ===== */
+@media (max-width: 768px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  /* NAV */
+  .cyber-nav{
+    padding:12px 4%;
+    flex-wrap:wrap;
+  }
+  .nav-grid{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+  }
+  .nav-pixel{
+    padding:8px 12px;
+    font-size:.7rem;
+  }
+  
+  .nav-controls {
+    gap: 6px;
+  }
+  
+  .control-pixel {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  /* HERO */
+  .hologram-hero{
+    grid-template-columns:1fr;
+    padding:140px 5% 60px;
+    text-align:center;
+  }
+
+  .hologram-title{
+    font-size:2.4rem;
+  }
+
+  .cyber-subtitle{
+    margin-left:auto;
+    margin-right:auto;
+    font-size:1rem;
+  }
+
+  .hologram-image{
+    width:220px;
+    height:220px;
+    margin:40px auto 0;
+  }
+/* ===== SCROLL UP BUTTON SIZE FIX (ADD ONLY) ===== */
+#scrollTop,
+.scroll-top,
+.scroll-up,
+.back-to-top{
+  width:32px !important;
+  height:32px !important;
+  font-size:16px !important;
+  bottom:20px !important;
+  right:20px !important;
+}
+
+/* Mobile – even smaller */
+@media (max-width: 768px){
+  #scrollTop,
+  .scroll-top,
+  .scroll-up,
+  .back-to-top{
+    width:26px !important;
+    height:26px !important;
+    font-size:14px !important;
+    bottom:16px !important;
+    right:16px !important;
+  }
+}
+/* ===== MOBILE TYPING TEXT OVERLAP FIX (ADD ONLY) ===== */
+@media (max-width: 768px){
+
+  .typing-text,
+  .typewriter,
+  .typing,
+  .dynamic-text{
+    display:block !important;
+    margin-top:18px !important;
+    line-height:1.4 !important;
+    position:relative !important;
+  }
+
+  .hologram-title{
+    margin-bottom:24px;
+  }
+}
+
+  /* BUTTONS */
+  .cyber-button{
+    margin:20px 6px 0;
+    padding:12px 22px;
+    font-size:.75rem;
+  }
+}
+
+        .loading-text::after {
+            content: 'INITIALIZING QUANTUM PORTFOLIO...';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            overflow: hidden;
+            animation: typing 2s steps(30) forwards;
+        }
+
+        @keyframes typing {
+            to { width: 100%; }
+        }
+
+        /* Cyberpunk Navigation */
+        .cyber-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+        }
+        
+        /* Scroll Progress Bar */
+        .nav-scroll-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--cyber-blue), var(--matrix-green));
+            width: 0%;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .cyber-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary), var(--cyber-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, var(--primary), var(--cyber-blue)) 1;
+            animation: borderGlow 2s infinite alternate;
+        }
+
+        @keyframes borderGlow {
+            from { box-shadow: 0 0 15px var(--primary-glow); }
+            to { box-shadow: 0 0 30px var(--cyber-blue); }
+        }
+
+        .nav-grid {
+            display: flex;
+            gap: 10px;
+        }
+html {
+  font-size: 87%;
+}
+
+/* ===== DJ NEON SCROLLBAR ===== */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--cyber-blue) rgba(0, 0, 0, 0.35);
+}
+
+/* Chrome / Edge / Safari */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.85),
+    rgba(10, 10, 15, 0.95)
+  );
+  border-left: 1px solid rgba(0, 243, 255, 0.15);
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    var(--primary),
+    var(--cyber-blue),
+    var(--matrix-green),
+    var(--cyber-blue),
+    var(--primary)
+  );
+  background-size: 100% 300%;
+  animation: djScrollPulse 3s linear infinite;
+
+  box-shadow:
+    0 0 12px var(--cyber-blue),
+    0 0 24px var(--primary-glow),
+    inset 0 0 6px rgba(255, 255, 255, 0.25);
+}
+
+/* Hover = Beat Drop */
+::-webkit-scrollbar-thumb:hover {
+  animation-duration: 1.2s;
+  box-shadow:
+    0 0 18px var(--matrix-green),
+    0 0 40px var(--cyber-blue),
+    0 0 60px var(--primary-glow);
+}
+
+/* DJ Gradient Motion */
+@keyframes djScrollPulse {
+  0%   { background-position: 50% 0%; }
+  50%  { background-position: 50% 100%; }
+  100% { background-position: 50% 0%; }
+}
+
+        .nav-pixel {
+            position: relative;
+            padding: 12px 20px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 500;
+            color: var(--light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .nav-pixel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .nav-pixel:hover::before {
+            left: 100%;
+        }
+
+        .nav-pixel:hover {
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 15px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        .nav-pixel.active {
+            background: linear-gradient(45deg, var(--primary), var(--cyber-blue));
+            color: white;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-pixel {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyber-blue);
+            font-size: 1.1rem;
+            cursor: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .control-pixel::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--cyber-blue) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .control-pixel:hover::after {
+            opacity: 0.3;
+        }
+
+        .control-pixel:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 0 20px var(--cyber-blue);
+        }
+
+        /* Holographic Hero Section */
+        .hologram-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+            padding-top: 120px;
+        }
+
+        /* Content Container - 90% width */
+        .content-container {
+            max-width: 90%;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .hologram-container {
+            flex: 1;
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+            margin-top: 40px;
+        }
+
+        .hologram-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .title-line {
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .title-line span {
+            display: inline-block;
+            transform: translateY(100%);
+            animation: titleReveal 1s forwards;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px currentColor;
+        }
+
+        .title-line:nth-child(1) span { animation-delay: 0.3s; }
+        .title-line:nth-child(2) span { animation-delay: 0.6s; }
+
+        @keyframes titleReveal {
+            to { transform: translateY(0); }
+        }
+/* Footer Social Media */
+.footer-social {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 243, 255, 0.1);
+}
+
+.footer-social h4 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.footer-social .social-matrix {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    justify-content: start;
+}
+
+.footer-social .social-pixel {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cyber-blue);
+    font-size: 1rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.footer-social .social-pixel::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--cyber-blue);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+/* Vertical Scanline Shadow Effect */
+.scanline-shadow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 10%,
+        rgba(0, 0, 0, 0.25) 20%,
+        rgba(0, 0, 0, 0.15) 30%,
+        transparent 40%,
+        transparent 60%,
+        rgba(0, 0, 0, 0.15) 70%,
+        rgba(0, 0, 0, 0.25) 80%,
+        rgba(0, 0, 0, 0.15) 90%,
+        transparent 100%
+    );
+    animation: scanShadow 8s linear infinite;
+    opacity: 0.3;
+    mix-blend-mode: multiply;
+}
+
+@keyframes scanShadow {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Alternative: Subtle moving gradient shadow */
+.glow-scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(124, 58, 237, 0.03),
+        rgba(0, 243, 255, 0.03),
+        rgba(124, 58, 237, 0.03),
+        transparent
+    );
+    animation: glowScan 12s ease-in-out infinite;
+    opacity: 0.4;
+}
+
+@keyframes glowScan {
+    0%, 100% {
+        transform: translateX(-100%);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateX(0%);
+        opacity: 0.5;
+    }
+}
+
+/* Pixel grid overlay for cyberpunk feel */
+.pixel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.1;
+    animation: gridFloat 20s linear infinite;
+}
+
+@keyframes gridFloat {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    25% {
+        transform: translateY(-10px) translateX(10px);
+    }
+    50% {
+        transform: translateY(-20px) translateX(0);
+    }
+    75% {
+        transform: translateY(-10px) translateX(-10px);
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+}
+
+/* Subtle Vignette Effect */
+.vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 0%,
+        transparent 60%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+    opacity: 0.5;
+}
+
+/* Dynamic Light Streaks */
+.light-streak {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 243, 255, 0.1),
+        rgba(0, 243, 255, 0.05),
+        transparent
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+    z-index: 1;
+    animation: lightSweep 15s ease-in-out infinite;
+}
+
+@keyframes lightSweep {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.5;
+    }
+    50% {
+        left: 100%;
+        opacity: 0.8;
+    }
+    51% {
+        opacity: 0;
+    }
+    100% {
+        left: -100%;
+        opacity: 0;
+    }
+}
+.footer-social .social-pixel:hover::before {
+    opacity: 0.2;
+}
+
+.footer-social .social-pixel:hover {
+    transform: translateY(-4px) rotate(5deg);
+    box-shadow: 0 0 15px var(--cyber-blue);
+}
+        .cyber-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--matrix-green);
+            animation: fadeIn 1s forwards 0.9s;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .hologram-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 2rem;
+            animation: fadeIn 1s forwards 1.2s;
+            opacity: 0;
+            flex-wrap: wrap;
+        }
+
+        .cyber-button {
+            padding: 15px 30px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: none;
+            transition: var(--transition);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .cyber-button:hover::before {
+            left: 100%;
+        }
+
+        .cyber-button.primary {
+            background: linear-gradient(45deg, var(--primary), var(--cyber-blue));
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .cyber-button.secondary {
+            background: transparent;
+            color: var(--matrix-green);
+            border-color: var(--matrix-green);
+        }
+
+        .cyber-button.secondary:hover {
+            background: var(--matrix-green);
+            color: black;
+            box-shadow: 0 0 30px var(--matrix-green);
+        }
+
+        .hologram-display {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 500px;
+        }
+
+        .hologram-image {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            animation: floatHologram 6s ease-in-out infinite;
+        }
+
+        @keyframes floatHologram {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(5deg); }
+            66% { transform: translateY(8px) rotate(-5deg); }
+        }
+
+        .hologram-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            filter: contrast(1.2) saturate(1.2);
+            border: 3px solid transparent;
+            border-image: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent)) 1;
+            box-shadow: 
+                0 0 40px var(--primary-glow),
+                0 0 70px var(--secondary-glow),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .hologram-grid {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            transform: rotate(45deg);
+            animation: gridRotate 20s linear infinite;
+        }
+
+        @keyframes gridRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hologram-particle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(0, 255, 157, 0.1) 0%, transparent 50%);
+            filter: blur(20px);
+        }
+
+        /* Neural Network Section */
+        .neural-section {
+            padding: 120px 5%;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            display: inline-block;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
+        }
+
+        .section-title::before { right: calc(100% + 20px); }
+        .section-title::after { left: calc(100% + 20px); }
+
+        .title-glow {
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px currentColor;
+        }
+
+        .neural-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .neural-node {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .neural-node::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 243, 255, 0.05) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .neural-node:hover::before {
+            transform: translateX(100%);
+        }
+
+        .neural-node:hover {
+            transform: translateY(-8px);
+            border-color: var(--cyber-blue);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px var(--primary-glow);
+        }
+
+        .node-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary), var(--cyber-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .node-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+            transform: translateX(-100%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .node-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--cyber-blue);
+        }
+
+        
+        .skills-section {
+            padding: 120px 5%;
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .skills-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(124, 58, 237, 0.05) 50%, transparent 70%);
+            animation: matrixScan 10s linear infinite;
+        }
+
+        @keyframes matrixScan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 90%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .skill-category:hover::before {
+            transform: translateX(0);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 243, 255, 0.1);
+            border-color: var(--cyber-blue);
+        }
+
+        .category-title {
+            font-family: 'Orbitron', monospace;
+            color: var(--cyber-blue);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .skill-name {
+            flex: 1;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .skill-bar {
+            flex: 2;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            position: relative;
+            transition: width 1.5s ease-out;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progressShine 2s infinite;
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .skill-percent {
+            font-family: 'Orbitron', monospace;
+            color: var(--matrix-green);
+            font-weight: bold;
+            min-width: 40px;
+            text-align: right;
+            transition: color 0.3s ease;
+        }
+
+        /* Animate skill bars on scroll */
+        .fade-up .skill-progress {
+            width: 0 !important;
+        }
+
+        .fade-up.visible .skill-progress {
+            animation: fillProgress 1.5s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fillProgress {
+            to {
+                width: var(--target-width);
+            }
+        }
+
+        /* Quantum Timeline */
+        .quantum-timeline {
+            padding: 80px 5%;
+            position: relative;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--cyber-blue), var(--matrix-green), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-nodes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .timeline-node {
+            position: relative;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .timeline-node:nth-child(odd) {
+            margin-right: 50%;
+            transform: translateX(calc(100% + 20px));
+        }
+
+        .timeline-node:nth-child(even) {
+            margin-left: 50%;
+            transform: translateX(calc(-100% - 20px));
+        }
+
+        .timeline-node:hover {
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 25px var(--matrix-green);
+            transform: translateX(0) scale(1.03);
+        }
+
+        .timeline-date {
+            font-family: 'Orbitron', monospace;
+            color: var(--matrix-green);
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Project Gallery */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 120px 5%;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            position: relative;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.4s;
+            mix-blend-mode: overlay;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 0.6;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 25px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+
+        .project-card:hover .project-info {
+            transform: translateY(0);
+        }
+
+        /* Contact Matrix */
+        .contact-matrix {
+            padding: 60px 5%;
+            position: relative;
+            margin-top: 40px;
+        }
+        
+        .contact-matrix .section-header {
+            margin-bottom: 25px;
+        }
+
+        .matrix-form {
+            max-width: 700px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .matrix-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 48%, rgba(0, 243, 255, 0.1) 50%, transparent 52%),
+                linear-gradient(transparent 48%, rgba(0, 243, 255, 0.1) 50%, transparent 52%);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            animation: matrixGrid 20s linear infinite;
+        }
+
+        @keyframes matrixGrid {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        /* FIXED INPUT BOXES */
+        .matrix-input {
+            background: rgba(0, 0, 0, 0.3) !important;
+            border: 1px solid rgba(0, 243, 255, 0.2) !important;
+            padding: 12px !important;
+            color: white !important;
+            font-family: 'Space Grotesk', sans-serif !important;
+            font-size: 0.85rem !important;
+            transition: var(--transition) !important;
+            grid-column: span 2 !important;
+            cursor: text !important;
+            z-index: 100 !important;
+            position: relative !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            outline: none !important;
+        }
+
+        .matrix-input:focus {
+            border-color: var(--cyber-blue) !important;
+            box-shadow: 0 0 15px var(--cyber-blue) !important;
+            outline: 2px solid transparent !important;
+            background: rgba(0, 0, 0, 0.4) !important;
+        }
+
+        .matrix-input:hover {
+            border-color: var(--cyber-blue) !important;
+        }
+
+        .matrix-input.half {
+            grid-column: span 1 !important;
+        }
+
+        /* Remove cursor interference on inputs */
+        .matrix-input {
+            pointer-events: auto !important;
+        }
+
+        .matrix-input:hover ~ .cursor,
+        .matrix-input:focus ~ .cursor {
+            opacity: 0 !important;
+        }
+
+        .matrix-input:hover ~ .cursor-follower,
+        .matrix-input:focus ~ .cursor-follower {
+            opacity: 0 !important;
+        }
+
+        .matrix-input:hover ~ .cursor-dot,
+        .matrix-input:focus ~ .cursor-dot {
+            opacity: 0 !important;
+        }
+
+        /* Digital Footer */
+        .digital-footer {
+            padding: 60px 5% 30px;
+            background: rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Resume Download - Subtle Hover */
+        .resume-download-container {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+        
+        .resume-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 8px;
+            color: var(--cyber-blue);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .resume-download-btn:hover {
+            background: rgba(0, 243, 255, 0.15);
+            border-color: rgba(0, 243, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 243, 255, 0.2);
+        }
+
+        .footer-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--cyber-blue);
+        }
+
+        .social-matrix {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .social-pixel {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyber-blue);
+            font-size: 1.1rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .social-pixel::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--cyber-blue);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .social-pixel:hover::before {
+            opacity: 0.2;
+        }
+
+        .social-pixel:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 15px var(--cyber-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+            position: relative;
+        }
+
+        .footer-bottom::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyber-blue), var(--matrix-green), transparent);
+            animation: scanLine 3s linear infinite;
+        }
+
+        @keyframes scanLine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Quantum Effects */
+        .quantum-effect {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9997;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, var(--cyber-blue) 0%, transparent 70%);
+            opacity: 0;
+            transform: scale(0);
+            filter: blur(15px);
+        }
+
+        /* Message Notification System - NEW */
+        .message-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, rgba(10, 10, 15, 0.95), rgba(20, 20, 30, 0.95));
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--matrix-green);
+            border-radius: 10px;
+            padding: 15px 20px;
+            min-width: 300px;
+            max-width: 400px;
+            z-index: 99999;
+            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.3);
+            animation: slideInRight 0.5s ease-out;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .notification-content i {
+            color: var(--matrix-green);
+            font-size: 1.5rem;
+            margin-top: 2px;
+        }
+        
+        .notification-content div {
+            flex: 1;
+        }
+        
+        .notification-content strong {
+            color: var(--cyber-blue);
+            font-family: 'Orbitron', monospace;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .notification-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+        
+        .notification-close:hover {
+            color: var(--accent);
+        }
+        
+        .notification-exit {
+            animation: slideOutRight 0.5s ease-out forwards;
+        }
+        
+        @keyframes slideOutRight {
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design - MOBILE FIRST */
+        @media (max-width: 1200px) {
+            .hologram-hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+                padding-top: 100px;
+            }
+            
+            .hologram-container {
+                max-width: 100%;
+                margin-top: 0;
+            }
+            
+            .hologram-display {
+                height: 400px;
+            }
+            
+            .timeline-node:nth-child(odd),
+            .timeline-node:nth-child(even) {
+                margin: 0;
+                transform: none;
+            }
+            
+            .timeline-line {
+                display: none;
+            }
+            
+            .typewriter-container {
+                top: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .nav-grid {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 15, 0.95);
+                backdrop-filter: blur(25px);
+                flex-direction: column;
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+            /* ================= MOBILE FIT FIX ================= */
+@media (max-width: 768px){
+
+  /* --- OPENING OVERLAY --- */
+  .elite-opening-title{
+    font-size:1.9rem;
+    letter-spacing:2px;
+    padding:0 10px;
+  }
+
+  .elite-opening-sub{
+    font-size:.7rem;
+    letter-spacing:2px;
+  }
+
+  .elite-line{
+    width:90px;
+    margin-bottom:22px;
+  }
+
+  /* --- NAVBAR --- */
+  .elite-nav{
+    padding:12px 4%;
+    flex-wrap:wrap;
+  }
+
+  .elite-nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px;
+    margin-top:10px;
+  }
+
+  .elite-nav-links a{
+    font-size:.75rem;
+  }
+
+  .elite-nav-actions{
+    margin-top:10px;
+  }
+
+  /* --- INTRO STATEMENT --- */
+  .elite-scroll-intro{
+    padding:100px 5% 70px;
+  }
+
+  .elite-scroll-intro h2{
+    font-size:1.8rem;
+  }
+
+  /* --- SECTIONS --- */
+  .elite-section{
+    padding:100px 6%;
+  }
+
+  .elite-heading{
+    font-size:1.9rem;
+  }
+
+  .elite-text{
+    font-size:.9rem;
+    letter-spacing:.8px;
+  }
+
+  /* --- GRID STACK --- */
+  .elite-grid{
+    gap:28px;
+  }
+
+  /* --- TIMELINE --- */
+  .elite-timeline{
+    gap:30px;
+  }
+
+  /* --- CURSOR OFF ON MOBILE (PERFORMANCE) --- */
+  .elite-cursor{
+    display:none;
+  }
+}
+
+            .nav-grid.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-pixel {
+                text-align: center;
+                margin: 5px 0;
+                padding: 15px;
+            }
+            
+            .hologram-title {
+                font-size: 2.8rem;
+            }
+            
+            .hologram-display {
+                height: 350px;
+            }
+            
+            .hologram-image {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .hologram-grid {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-title::before,
+            .section-title::after {
+                width: 40px;
+            }
+            
+            .matrix-form {
+                grid-template-columns: 1fr;
+                padding: 25px 15px;
+                max-width: 95%;
+            }
+            
+            .contact-matrix {
+                padding: 40px 3%;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .skills-grid,
+            .neural-grid,
+            .project-grid {
+                max-width: 95%;
+                gap: 15px;
+            }
+            
+            .skill-item {
+                padding: 15px;
+            }
+            
+            .matrix-input.half {
+                grid-column: span 2;
+            }
+            
+            .typewriter-container {
+                top: 70px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                text-align: center;
+            }
+            
+            .typewriter-text {
+                font-size: 1.5rem;
+            }
+            
+            .cyber-nav {
+                padding: 15px 5%;
+            }
+            
+            .cyber-logo {
+                font-size: 1.5rem;
+                padding: 6px 12px;
+            }
+            
+            .control-pixel {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hologram-title {
+                font-size: 2.2rem;
+            }
+            
+            .cyber-subtitle {
+                font-size: 1rem;
+                padding-left: 15px;
+            }
+            
+            .cyber-button {
+                padding: 12px 20px;
+                font-size: 0.8rem;
+            }
+            
+            .hologram-buttons {
+                justify-content: center;
+            }
+            
+            .neural-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-card {
+                height: 300px;
+            }
+            
+            .social-matrix {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 10px;
+            }
+            
+            .social-pixel {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .typewriter-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Quantum Loader -->
+   <!-- ================= ELITE CINEMATIC OPEN ================= -->
+<div class="elite-opening" id="eliteOpening">
+  <div class="elite-opening-inner">
+    <span class="elite-line"></span>
+    <h1 class="elite-opening-title">POWER · PRECISION · LEGACY</h1>
+    <p class="elite-opening-sub">Built in silence. Compounds forever.</p>
+  </div>
+</div>
+
+<style>
+.elite-opening{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center,#0a0a0f 0%,#000 70%);
+  z-index:100000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:eliteFadeOut 1.6s ease forwards;
+  animation-delay:3.6s;
+}
+/* ===== OPENING TITLE AUTO-FIT (MOBILE) ===== */
+@media (max-width: 768px){
+
+  .elite-opening-inner{
+    width:100%;
+  }
+
+  .elite-opening-title{
+    white-space: nowrap;          /* stay one line */
+    font-size: clamp(1.1rem, 4vw, 1.6rem); /* AUTO SCALE */
+    letter-spacing: clamp(0.8px, 1vw, 1.4px);
+    padding:0 14px;               /* prevent edge cut */
+    box-sizing:border-box;
+    text-align:center;
+  }
+}
+
+.elite-opening-inner{text-align:center}
+.elite-line{
+  width:140px;height:2px;margin:0 auto 32px;
+  background:linear-gradient(90deg,#c9b26d,#00f3ff,#c9b26d);
+  animation:eliteLine 2.2s ease infinite
+}
+.elite-opening-title{
+  font-family:'Orbitron',monospace;
+  font-size:2rem;
+  letter-spacing:5px;
+  background:linear-gradient(90deg,#c9b26d,#ffffff,#c9b26d);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent
+}
+.elite-opening-sub{
+  margin-top:12px;font-size:.85rem;letter-spacing:4px;opacity:.55
+}
+/* ===== SUBTLE GOLD GLOW FOR OPENING TITLE ===== */
+.elite-opening-title{
+  text-shadow:
+    0 0 6px rgba(243, 204, 86, 0.35),
+    0 0 12px rgba(201,178,109,0.15);
+}
+
+@keyframes eliteFadeOut{to{opacity:0;visibility:hidden}}
+@keyframes eliteLine{0%,100%{transform:scaleX(.6)}50%{transform:scaleX(1)}}
+
+
+/* ===== FIX TYPEWRITER OVERLAP (MOBILE ONLY) ===== */
+@media (max-width: 768px){
+
+  .typewriter,
+  .digital-visionary {
+    display:block;
+    margin-bottom:14px;   /* creates clean gap */
+  }
+
+  .hero-hello,
+  .hello-text {
+    margin-top:10px;      /* pushes HELLO I AM down */
+    line-height:1.2;
+  }
+}
+
+</style>
+
+<script>
+window.addEventListener('load',()=>{
+  const e=document.getElementById('eliteOpening');
+  setTimeout(()=>e && e.remove(),4200);
+});
+</script>
+
+
+    <!-- Custom Cursors -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Matrix Background -->
+    <div class="matrix-bg"></div>
+
+    <!-- Typewriter Effect -->
+    <div class="typewriter-container">
+        <span class="typewriter-text" id="typewriter"></span>
+    </div>
+<br>
+    <!-- Cyber Navigation -->
+    <nav class="cyber-nav">
+        <div class="nav-scroll-progress" id="navScrollProgress"></div>
+        <div class="cyber-logo">RΛ</div>
+        
+        <!-- Mobile Menu Toggle -->
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- Simple Shadow Effect -->
+<div class="horizontal-shadow"></div>
+<div class="glow-pulse" id="glowPulse"></div>
+
+<!-- Shadow Effects -->
+<div class="scanline-shadow"></div>
+<div class="glow-scanline"></div>
+<div class="pixel-overlay"></div>
+<div class="vignette"></div>
+<div class="light-streak"></div>
+<div class="light-streak" style="animation-delay: 7s; width: 200px; opacity: 0.3;"></div>
+
+        <div class="nav-grid" id="navGrid">
+            <a href="#home" class="nav-pixel active" data-en="HOME" data-np="गृह">HOME</a>
+            <a href="#about" class="nav-pixel" data-en="ABOUT" data-np="बारे">ABOUT</a>
+            <a href="#skills" class="nav-pixel" data-en="SKILLS" data-np="कौशल">SKILLS</a>
+            <a href="#timeline" class="nav-pixel" data-en="JOURNEY" data-np="यात्रा">JOURNEY</a>
+            <a href="#projects" class="nav-pixel" data-en="PROJECTS" data-np="परियोजना">PROJECTS</a>
+            <a href="#contact" class="nav-pixel" data-en="CONTACT" data-np="सम्पर्क">CONTACT</a>
+        </div>
+        <div class="nav-controls">
+            <button class="control-pixel" id="themeToggle" title="Toggle Quantum Mode">
+                <i class="fas fa-atom"></i>
+            </button>
+            <button class="control-pixel" id="langToggle" title="Switch Language Matrix">
+                <i class="fas fa-language"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator">
+        <div class="scroll-mouse"></div>
+        <div class="scroll-text" data-en="SCROLL" data-np="स्क्रोल">SCROLL</div>
+    </div>
+
+    <!-- Holographic Hero -->
+    <section class="hologram-hero" id="home">
+        <div class="hologram-container">
+            <h1 class="hologram-title">
+                <span class="title-line"><span> HELLO I AM</span></span>
+                <span class="title-line"><span>RIJAN ARYAL</span></span>
+            </h1>
+            <p class="cyber-subtitle" data-en="Crafting revolutionary digital experiences that merge cutting-edge quantum computing principles with human-centered design philosophy. Pushing boundaries of what's possible in the digital realm." data-np="मानव-केन्द्रित डिजाइन दर्शनसँग अत्याधुनिक क्वान्टम कम्प्युटिङ सिद्धान्तहरू मिलाउने क्रान्तिकारी डिजिटल अनुभवहरू सिर्जना गर्दै। डिजिटल क्षेत्रमा सम्भव भएको कुराको सीमाहरू धकेल्दै।">
+                Crafting revolutionary digital experiences that merge cutting-edge quantum computing principles with human-centered design philosophy.
+            </p>
+            <div class="hologram-buttons">
+                <a href="#projects" class="cyber-button primary" data-en="EXPLORE WORKS" data-np="कामहरू अन्वेषण गर्नुहोस्">
+                    <i class="fas fa-bolt"></i> EXPLORE WORKS
+                </a>
+                <a href="#contact" class="cyber-button secondary" data-en="INITIATE CONTACT" data-np="सम्पर्क सुरु गर्नुहोस्">
+                    <i class="fas fa-satellite"></i> INITIATE CONTACT
+                </a>
+            </div>
+        </div>
+        <div class="hologram-display">
+            <div class="hologram-grid"></div>
+            <div class="hologram-particle"></div>
+            <div class="hologram-image">
+                <img src="/616850732_1613430472989980_8264286453665341669_n.jpg" alt="Rijan Aryal - Digital Visionary">
+            </div>
+        </div>
+    </section>
+
+    <!-- Neural Network Section -->
+    <section class="neural-section" id="about">
+        <div class="section-header">
+            <h2 class="section-title"><span class="title-glow" data-en="NEURAL ARCHITECTURE" data-np="न्यूरल संरचना">NEURAL ARCHITECTURE</span></h2>
+            <p data-en="Advanced skill matrix and technological expertise" data-np="उन्नत कौशल म्याट्रिक्स र प्राविधिक विशेषज्ञता">Advanced skill matrix and technological expertise</p>
+        </div>
+        
+        <div class="neural-grid">
+            <!-- Neural Nodes -->
+            <div class="neural-node fade-up">
+                <div class="node-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="node-title" data-en="QUANTUM AI INTEGRATION" data-np="क्वान्टम AI एकीकरण">QUANTUM AI INTEGRATION</h3>
+                <p data-en="Developing next-generation AI systems with quantum computing capabilities for unprecedented processing power and predictive accuracy." data-np="अभूतपूर्व प्रसंस्करण शक्ति र भविष्यवाणी सटीकताको लागि क्वान्टम कम्प्युटिङ क्षमताहरूको साथ अर्को पुस्ताको AI प्रणालीहरू विकास गर्दै।">
+                    Next-gen AI systems with quantum computing capabilities.
+                </p>
+                <div class="skill-progress" style="margin-top: 20px;">
+                    <div style="width: 96%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--secondary));"></div>
+                </div>
+            </div>
+            
+            <div class="neural-node fade-up">
+                <div class="node-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="node-title" data-en="HOLOGRAPHIC UI/UX" data-np="होलोग्राफिक UI/UX">HOLOGRAPHIC UI/UX</h3>
+                <p data-en="Creating immersive 3D interfaces using holographic projection technology and spatial computing for next-level user experiences." data-np="अर्को-स्तरका प्रयोगकर्ता अनुभवहरूको लागि होलोग्राफिक प्रोजेक्शन प्रविधि र स्थानिक कम्प्युटिङ प्रयोग गरेर डुबाउने 3D इन्टरफेसहरू सिर्जना गर्दै।">
+                    Immersive 3D interfaces using holographic technology.
+                </p>
+                <div class="skill-progress" style="margin-top: 20px;">
+                    <div style="width: 94%; height: 4px; background: linear-gradient(90deg, var(--secondary), var(--accent));"></div>
+                </div>
+            </div>
+            
+            <div class="neural-node fade-up">
+                <div class="node-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3 class="node-title" data-en="BLOCKCHAIN ARCHITECTURE" data-np="ब्लकचेन संरचना">BLOCKCHAIN ARCHITECTURE</h3>
+                <p data-en="Building decentralized applications and smart contract systems with enhanced security protocols and quantum-resistant cryptography." data-np="बढाइएको सुरक्षा प्रोटोकल र क्वान्टम-प्रतिरोधी क्रिप्टोग्राफीको साथ विकेन्द्रीकृत अनुप्रयोगहरू र स्मार्ट कन्ट्राक्ट प्रणालीहरू निर्माण गर्दै।">
+                    Decentralized applications with quantum-resistant cryptography.
+                </p>
+                <div class="skill-progress" style="margin-top: 20px;">
+                    <div style="width: 92%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--cyber-blue));"></div>
+                </div>
+            </div>
+            
+            <div class="neural-node fade-up">
+                <div class="node-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="node-title" data-en="AUTONOMOUS SYSTEMS" data-np="स्वायत्त प्रणालीहरू">AUTONOMOUS SYSTEMS</h3>
+                <p data-en="Developing self-learning autonomous systems with neural networks capable of real-time adaptation and decision-making without human intervention." data-np="मानवीय हस्तक्षेप बिना वास्तविक-समय अनुकूलन र निर्णय लिन सक्ने तन्त्रिका नेटवर्कहरूको साथ स्व-सिकाइ स्वायत्त प्रणालीहरू विकास गर्दै।">
+                    Self-learning autonomous systems with neural networks.
+                </p>
+                <div class="skill-progress" style="margin-top: 20px;">
+                    <div style="width: 90%; height: 4px; background: linear-gradient(90deg, var(--cyber-blue), var(--matrix-green));"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section - NEW -->
+    <section class="skills-section" id="skills">
+        <div class="section-header">
+            <h2 class="section-title"><span class="title-glow" data-en="SKILLS MATRIX" data-np="कौशल म्याट्रिक्स">SKILLS MATRIX</span></h2>
+            <p data-en="Technical proficiency across multiple dimensions" data-np="बहुआयामिक प्राविधिक प्रवीणता">Technical proficiency across multiple dimensions</p>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-category fade-up">
+                <h3 class="category-title"><i class="fas fa-code"></i> DEVELOPMENT</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <span class="skill-name">React / Next.js</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%;" data-width="95%"></div>
+                        </div>
+                        <span class="skill-percent">77%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Node.js / Express</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%;" data-width="92%"></div>
+                        </div>
+                        <span class="skill-percent">57%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Python / Django</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;" data-width="90%"></div>
+                        </div>
+                        <span class="skill-percent">60%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">MongoDB / PostgreSQL</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%;" data-width="88%"></div>
+                        </div>
+                        <span class="skill-percent">77%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category fade-up">
+                <h3 class="category-title"><i class="fas fa-paint-brush"></i> DESIGN & UI/UX</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <span class="skill-name">Figma / Adobe XD</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 94%;" data-width="94%"></div>
+                        </div>
+                        <span class="skill-percent">33%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">UI/UX Design</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 96%;" data-width="96%"></div>
+                        </div>
+                        <span class="skill-percent">73%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Motion Design</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;" data-width="85%"></div>
+                        </div>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Prototyping</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%;" data-width="92%"></div>
+                        </div>
+                        <span class="skill-percent">92%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category fade-up">
+                <h3 class="category-title"><i class="fas fa-brain"></i> AI & TECH</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <span class="skill-name">Machine Learning</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 87%;" data-width="87%"></div>
+                        </div>
+                        <span class="skill-percent">87%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">TensorFlow / PyTorch</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;" data-width="85%"></div>
+                        </div>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Blockchain / Web3</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 82%;" data-width="82%"></div>
+                        </div>
+                        <span class="skill-percent">82%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">DevOps / Docker</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;" data-width="80%"></div>
+                        </div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantum Timeline -->
+    <section class="quantum-timeline" id="timeline">
+        <div class="section-header">
+            <h2 class="section-title"><span class="title-glow" data-en="QUANTUM JOURNEY" data-np="क्वान्टम यात्रा">QUANTUM JOURNEY</span></h2>
+            <p data-en="Temporal progression of digital evolution" data-np="डिजिटल विकासको समयगत प्रगति">Temporal progression of digital evolution</p>
+        </div>
+        
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-nodes">
+                <!-- Timeline Nodes -->
+                <div class="timeline-node fade-up">
+                    <div class="timeline-date">
+                        <i class="fas fa-rocket"></i> 2015 - QUANTUM INCEPTION
+                    </div>
+                    <h3 data-en="Digital Awakening" data-np="डिजिटल जागरण">Digital Awakening</h3>
+                    <p data-en="Began journey into quantum computing and AI research while establishing first tech startup focused on neural interfaces." data-np="न्यूरल इन्टरफेसमा केन्द्रित पहिलो टेक स्टार्टअप स्थापना गर्दै क्वान्टम कम्प्युटिङ र AI अनुसन्धानमा यात्रा सुरु गरियो।">
+                        Quantum computing research & first tech startup.
+                    </p>
+                </div>
+                
+                <div class="timeline-node fade-up">
+                    <div class="timeline-date">
+                        <i class="fas fa-microchip"></i> 2018 - NEURAL BREAKTHROUGH
+                    </div>
+                    <h3 data-en="AI Revolution" data-np="AI क्रान्ति">AI Revolution</h3>
+                    <p data-en="Developed proprietary neural network architecture that outperformed conventional models by 300% in processing efficiency." data-np="प्रसंस्करण दक्षतामा परम्परागत मोडलहरूभन्दा ३००% ले बढी प्रदर्शन गर्ने स्वामित्व न्यूरल नेटवर्क संरचना विकास गरियो।">
+                        Proprietary neural network architecture.
+                    </p>
+                </div>
+                
+                <div class="timeline-node fade-up">
+                    <div class="timeline-date">
+                        <i class="fas fa-globe"></i> 2020 - GLOBAL EXPANSION
+                    </div>
+                    <h3 data-en="International Recognition" data-np="अन्तर्राष्ट्रिय मान्यता">International Recognition</h3>
+                    <p data-en="Awarded International Tech Innovation Prize for groundbreaking work in quantum-human interface development. Featured in MIT Technology Review." data-np="क्वान्टम-मानव इन्टरफेस विकासमा आधारभूत कामको लागि अन्तर्राष्ट्रिय टेक नवप्रवर्तन पुरस्कार प्राप्त। MIT टेक्नोलोजी समीक्षामा चित्रित।">
+                        International Tech Innovation Prize winner.
+                    </p>
+                </div>
+                
+                <div class="timeline-node fade-up">
+                    <div class="timeline-date">
+                        <i class="fas fa-atom"></i> 2023 - QUANTUM LEAP
+                    </div>
+                    <h3 data-en="Future Foundation" data-np="भविष्यको आधार">Future Foundation</h3>
+                    <p data-en="Established Quantum Digital Labs, pioneering the integration of quantum computing with everyday digital experiences. Currently consulting for Fortune 100 companies." data-np="क्वान्टम डिजिटल ल्याब स्थापना गरियो, क्वान्टम कम्प्युटिङलाई दैनिक डिजिटल अनुभवहरूसँग एकीकृत गर्ने अग्रगामी। हाल फर्च्युन १०० कम्पनीहरूको लागि परामर्श दिदै।">
+                        Founded Quantum Digital Labs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="project-grid" id="projects">
+        <div class="section-header">
+            <h2 class="section-title"><span class="title-glow" data-en="QUANTUM CREATIONS" data-np="क्वान्टम सृष्टिहरू">QUANTUM CREATIONS</span></h2>
+            <p data-en="Groundbreaking projects redefining digital boundaries" data-np="डिजिटल सीमाहरू पुन: परिभाषित गर्ने आधारभूत परियोजनाहरू">Groundbreaking projects redefining digital boundaries</p>
+        </div>
+        
+        <div class="project-card fade-up">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Bazzar Project" class="project-image">
+            <div class="project-overlay"></div>
+            <div class="project-info">
+                <h3 data-en="E-BAZZAR QUANTUM" data-np="ई-बजार क्वान्टम">E-BAZZAR QUANTUM</h3>
+                <p data-en="AI-powered e-commerce platform with quantum recommendation engine and holographic shopping interface." data-np="क्वान्टम सिफारिश इन्जिन र होलोग्राफिक खरिद इन्टरफेसको साथ AI-शक्ति प्राप्त इ-कमर्स प्लेटफर्म।">
+                    AI-powered platform with quantum recommendations.
+                </p>
+            </div>
+        </div>
+        
+        <div class="project-card fade-up">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nepali-Khana Project" class="project-image">
+            <div class="project-overlay"></div>
+            <div class="project-info">
+                <h3 data-en="NEPALI-KHANA AI" data-np="नेपाली-खाना AI">NEPALI-KHANA AI</h3>
+                <p data-en="Culinary AI system that generates traditional recipes with nutritional optimization and cultural authenticity algorithms." data-np="पोषण अनुकूलन र सांस्कृतिक प्रामाणिकता एल्गोरिदमहरूको साथ पारम्परिक खानाका बनाउने पाककला AI प्रणाली।">
+                    Culinary AI with cultural authenticity algorithms.
+                </p>
+            </div>
+        </div>
+        
+        <div class="project-card fade-up">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sancho Project" class="project-image">
+            <div class="project-overlay"></div>
+            <div class="project-info">
+                <h3 data-en="SANCHO QUANTUM LOGISTICS" data-np="सान्चो क्वान्टम लजिस्टिक्स">SANCHO QUANTUM LOGISTICS</h3>
+                <p data-en="Blockchain-based supply chain system with quantum encryption and autonomous delivery coordination." data-np="क्वान्टम एन्क्रिप्शन र स्वायत्त वितरण समन्वयको साथ ब्लकचेन-आधारित आपूर्ति श्रृंखला प्रणाली।">
+                    Blockchain supply chain with quantum encryption.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Matrix -->
+    <section class="contact-matrix" id="contact">
+        <div class="section-header">
+            <h2 class="section-title"><span class="title-glow" data-en="INITIATE CONNECTION" data-np="जडान सुरु गर्नुहोस्">INITIATE CONNECTION</span></h2>
+            <p data-en="Quantum entanglement protocol for collaboration" data-np="सहकार्यको लागि क्वान्टम उलझन प्रोटोकल">Quantum entanglement protocol for collaboration</p>
+        </div>
+        
+        <form class="matrix-form fade-up" id="contactForm">
+            <input type="text" class="matrix-input half" placeholder="YOUR QUANTUM SIGNATURE" required data-en="YOUR QUANTUM SIGNATURE" data-np="तपाईंको क्वान्टम हस्ताक्षर">
+            <input type="email" class="matrix-input half" placeholder="DIMENSIONAL FREQUENCY" required data-en="DIMENSIONAL FREQUENCY" data-np="आयामी आवृत्ति">
+            <input type="text" class="matrix-input" placeholder="SUBJECT MATRIX" required data-en="SUBJECT MATRIX" data-np="विषय म्याट्रिक्स">
+            <textarea class="matrix-input" rows="4" placeholder="QUANTUM MESSAGE TRANSMISSION" required data-en="QUANTUM MESSAGE TRANSMISSION" data-np="क्वान्टम सन्देश प्रसारण"></textarea>
+            <button type="submit" class="cyber-button primary" style="grid-column: span 2; margin-top: 15px;" data-en="TRANSMIT MESSAGE" data-np="सन्देश प्रसारण गर्नुहोस्">
+                <i class="fas fa-paper-plane"></i> TRANSMIT MESSAGE
+            </button>
+        </form>
+        
+        
+    </section>
+
+   <!-- Digital Footer -->
+<footer class="digital-footer">
+    <!-- Resume Download - Upper Footer -->
+    <div class="resume-download-container">
+        <a href="#" class="resume-download-btn" id="resumeDownload" data-en="DOWNLOAD RESUME" data-np="रेज्युमे डाउनलोड गर्नुहोस्">
+            <i class="fas fa-download"></i>
+            <span>DOWNLOAD RESUME</span>
+        </a>
+    </div>
+    
+    <div class="footer-grid">
+        <div>
+            <h3 class="footer-title">QUANTUM DIGITAL LABS</h3>
+            <p data-en="Pioneering the convergence of quantum computing and human-digital interaction since 2015." data-np="२०१५ देखि क्वान्टम कम्प्युटिङ र मानव-डिजिटल अन्तरक्रियाको अभिसरणमा अग्रगामी।">
+                Quantum computing meets human-digital interaction.
+            </p>
+            
+            <!-- Social Media in Footer -->
+            <div class="footer-social">
+                <h4 style="color: var(--cyber-blue); margin: 25px 0 15px; font-family: 'Orbitron', monospace;">CONNECT MATRIX</h4>
+                <div class="social-matrix">
+                    <a href="https://github.com/reejanaryal" class="social-pixel" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://facebook.com/reezon.aryal" class="social-pixel" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/rijan_111" class="social-pixel" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/9764514855" class="social-pixel" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="viber://add?number=9764514855" class="social-pixel" target="_blank">
+                        <i class="fab fa-viber"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h3 class="footer-title">FREQUENCY CHANNELS</h3>
+            <p><i class="fas fa-envelope" style="color: var(--cyber-blue); margin-right: 10px;"></i> aryalreezon87@gmail.com</p> <br>
+            <p><i class="fas fa-phone" style="color: var(--cyber-blue); margin-right: 10px;"></i> +977 9764514855</p><br>
+            <p><i class="fas fa-map-marker-alt" style="color: var(--cyber-blue); margin-right: 10px;"></i> <span data-en="Kathmandu, Nepal" data-np="काठमाडौं, नेपाल">Kathmandu, Nepal</span></p>
+        </div>
+        
+        <div>
+            <h3 class="footer-title">QUANTUM NAVIGATION</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <a href="#home" style="color: var(--cyber-blue); text-decoration: none; transition: var(--transition); padding: 8px 0; border-bottom: 1px solid rgba(0, 243, 255, 0.1);" 
+                   data-en="Home Matrix" data-np="गृह म्याट्रिक्स"
+                   onmouseenter="this.style.color='var(--matrix-green)'; this.style.paddingLeft='10px';"
+                   onmouseleave="this.style.color='var(--cyber-blue)'; this.style.paddingLeft='0';">
+                   <i class="fas fa-home" style="margin-right: 8px;"></i> Home Matrix
+                </a>
+                <a href="#about" style="color: var(--cyber-blue); text-decoration: none; transition: var(--transition); padding: 8px 0; border-bottom: 1px solid rgba(0, 243, 255, 0.1);" 
+                   data-en="Neural Archive" data-np="न्यूरल अभिलेख"
+                   onmouseenter="this.style.color='var(--matrix-green)'; this.style.paddingLeft='10px';"
+                   onmouseleave="this.style.color='var(--cyber-blue)'; this.style.paddingLeft='0';">
+                   <i class="fas fa-brain" style="margin-right: 8px;"></i> Neural Archive
+                </a>
+                <a href="#skills" style="color: var(--cyber-blue); text-decoration: none; transition: var(--transition); padding: 8px 0; border-bottom: 1px solid rgba(0, 243, 255, 0.1);" 
+                   data-en="Skills Matrix" data-np="कौशल म्याट्रिक्स"
+                   onmouseenter="this.style.color='var(--matrix-green)'; this.style.paddingLeft='10px';"
+                   onmouseleave="this.style.color='var(--cyber-blue)'; this.style.paddingLeft='0';">
+                   <i class="fas fa-chart-bar" style="margin-right: 8px;"></i> Skills Matrix
+                </a>
+                <a href="#projects" style="color: var(--cyber-blue); text-decoration: none; transition: var(--transition); padding: 8px 0; border-bottom: 1px solid rgba(0, 243, 255, 0.1);" 
+                   data-en="Quantum Projects" data-np="क्वान्टम परियोजनाहरू"
+                   onmouseenter="this.style.color='var(--matrix-green)'; this.style.paddingLeft='10px';"
+                   onmouseleave="this.style.color='var(--cyber-blue)'; this.style.paddingLeft='0';">
+                   <i class="fas fa-rocket" style="margin-right: 8px;"></i> Quantum Projects
+                </a>
+                <a href="#contact" style="color: var(--cyber-blue); text-decoration: none; transition: var(--transition); padding: 8px 0;" 
+                   data-en="Connect Protocol" data-np="जडान प्रोटोकल"
+                   onmouseenter="this.style.color='var(--matrix-green)'; this.style.paddingLeft='10px';"
+                   onmouseleave="this.style.color='var(--cyber-blue)'; this.style.paddingLeft='0';">
+                   <i class="fas fa-satellite" style="margin-right: 8px;"></i> Connect Protocol
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> RIJAN ARYAL | QUANTUM DIGITAL LABS</p>
+        <p style="margin-top: 10px; opacity: 0.7; font-size: 0.9rem;" data-en="All systems operational. Quantum entanglement established." data-np="सबै प्रणालीहरू सञ्चालनमा। क्वान्टम उलझन स्थापित।">
+            All systems operational. Quantum entanglement established.
+        </p>
+    </div>
+</footer>
+
+<!-- Quantum Scroll-to-Top Button -->
+<div class="quantum-scroll-top" id="quantumScrollTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<style>
+    /* Simple Scroll-to-Top Button */
+    .quantum-scroll-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9990;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        width: 35px;
+        height: 35px;
+        background: rgba(0, 243, 255, 0.15);
+        border: 1px solid rgba(0, 243, 255, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .quantum-scroll-top.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .quantum-scroll-top i {
+        font-size: 14px;
+        color: var(--cyber-blue);
+    }
+
+    .quantum-scroll-top:hover {
+        background: rgba(0, 243, 255, 0.25);
+        border-color: rgba(0, 243, 255, 0.5);
+    }
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .quantum-scroll-top {
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        .quantum-orb {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .ring-1 {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .ring-2 {
+            width: 70px;
+            height: 70px;
+        }
+        
+        .ring-3 {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .quantum-orb i {
+            font-size: 16px;
+        }
+    }
+</style>
+
+<script>
+    // Quantum Scroll-to-Top Functionality - WITHOUT LIGHT SPARK
+    document.addEventListener('DOMContentLoaded', function() {
+        const scrollTopBtn = document.getElementById('quantumScrollTop');
+        
+        // Show/hide button on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        // Clean quantum scroll to top - NO LIGHT SPARKS
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+    <script>
+        // Typewriter Effect
+        class TypeWriter {
+            constructor(element, words, wait = 3000) {
+                this.element = element;
+                this.words = words;
+                this.txt = '';
+                this.wordIndex = 0;
+                this.wait = parseInt(wait, 10);
+                this.type();
+                this.isDeleting = false;
+            }
+
+            type() {
+                // Current index of word
+                const current = this.wordIndex % this.words.length;
+                // Get full text of current word
+                const fullTxt = this.words[current];
+
+                // Check if deleting
+                if (this.isDeleting) {
+                    // Remove char
+                    this.txt = fullTxt.substring(0, this.txt.length - 1);
+                } else {
+                    // Add char
+                    this.txt = fullTxt.substring(0, this.txt.length + 1);
+                }
+
+                // Insert txt into element
+                this.element.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+                // Initial Type Speed
+                let typeSpeed = 100;
+
+                if (this.isDeleting) {
+                    typeSpeed /= 2;
+                }
+
+                // If word is complete
+                if (!this.isDeleting && this.txt === fullTxt) {
+                    // Make pause at end
+                    typeSpeed = this.wait;
+                    // Set delete to true
+                    this.isDeleting = true;
+                } else if (this.isDeleting && this.txt === '') {
+                    this.isDeleting = false;
+                    // Move to next word
+                    this.wordIndex++;
+                    // Pause before start typing
+                    typeSpeed = 500;
+                }
+
+                setTimeout(() => this.type(), typeSpeed);
+            }
+        }
+
+        // Message notification system
+        function showMessageNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'message-notification';
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Message Sent Successfully!</strong>
+                        <p>${message}</p>
+                    </div>
+                    <button class="notification-close">&times;</button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                notification.classList.add('notification-exit');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 500);
+            }, 5000);
+            
+            // Close button
+            notification.querySelector('.notification-close').addEventListener('click', () => {
+                notification.classList.add('notification-exit');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 500);
+            });
+        }
+
+        // Initialize quantum portfolio
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Initialize typewriter
+            const typewriterElement = document.getElementById('typewriter');
+            const words = ['UI/UX DESIGNER', 'WEB DEVELOPER', 'DIGITAL VISIONARY', 'TECH ENTHUSIAST', 'QUANTUM INNOVATOR'];
+            new TypeWriter(typewriterElement, words, 2000);
+            
+            // Quantum loader animation
+            setTimeout(() => {
+                document.getElementById('quantumLoader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('quantumLoader').style.display = 'none';
+                }, 1000);
+            }, 3000);
+            
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navGrid = document.getElementById('navGrid');
+            
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenuToggle.classList.toggle('active');
+                navGrid.classList.toggle('active');
+                
+                // Close menu when clicking on a link
+                document.querySelectorAll('.nav-pixel').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuToggle.classList.remove('active');
+                        navGrid.classList.remove('active');
+                    });
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuToggle.contains(e.target) && !navGrid.contains(e.target)) {
+                    mobileMenuToggle.classList.remove('active');
+                    navGrid.classList.remove('active');
+                }
+            });
+            
+            // Advanced custom cursor system - SMALLER AND SMOOTHER
+            const cursor = document.querySelector('.cursor');
+            const follower = document.querySelector('.cursor-follower');
+            const dot = document.querySelector('.cursor-dot');
+            let mouseX = 0, mouseY = 0;
+            let posX = 0, posY = 0;
+            
+            // Quantum particle effects
+            const quantumEffects = [];
+            
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                
+                // Create quantum particle effect (less frequent)
+                if (Math.random() > 0.9) {
+                    createQuantumEffect(e.clientX, e.clientY);
+                }
+            });
+            
+            function createQuantumEffect(x, y) {
+                const effect = document.createElement('div');
+                effect.className = 'quantum-effect';
+                effect.style.left = x + 'px';
+                effect.style.top = y + 'px';
+                document.body.appendChild(effect);
+                
+                // Animate effect
+                effect.animate([
+                    { opacity: 0.8, transform: 'scale(0)' },
+                    { opacity: 0, transform: 'scale(2)' }
+                ], {
+                    duration: 800,
+                    easing: 'ease-out'
+                });
+                
+                setTimeout(() => effect.remove(), 800);
+            }
+            
+            // SMOOTHER cursor animation
+            function animateCursor() {
+                posX += (mouseX - posX) * 0.08;
+                posY += (mouseY - posY) * 0.08;
+                
+                cursor.style.left = (posX - 4) + 'px';
+                cursor.style.top = (posY - 4) + 'px';
+                follower.style.left = (posX - 16) + 'px';
+                follower.style.top = (posY - 16) + 'px';
+                dot.style.left = (mouseX - 2) + 'px';
+                dot.style.top = (mouseY - 2) + 'px';
+                
+                requestAnimationFrame(animateCursor);
+            }
+            
+            animateCursor();
+            
+            // Cursor interaction effects - IMPROVED
+            const interactiveElements = document.querySelectorAll('a, button, .project-card, .neural-node, .timeline-node, .social-pixel, .nav-pixel, .control-pixel');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                    follower.classList.add('hover');
+                    
+                    // Create ripple effect
+                    createRippleEffect(mouseX, mouseY);
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                    follower.classList.remove('hover');
+                });
+            });
+            
+            // Input boxes should hide cursor
+            document.querySelectorAll('.matrix-input').forEach(input => {
+                input.addEventListener('mouseenter', () => {
+                    cursor.style.opacity = '0';
+                    follower.style.opacity = '0';
+                    dot.style.opacity = '0';
+                });
+                
+                input.addEventListener('mouseleave', () => {
+                    cursor.style.opacity = '1';
+                    follower.style.opacity = '1';
+                    dot.style.opacity = '1';
+                });
+                
+                input.addEventListener('focus', () => {
+                    cursor.style.opacity = '0';
+                    follower.style.opacity = '0';
+                    dot.style.opacity = '0';
+                });
+                
+                input.addEventListener('blur', () => {
+                    cursor.style.opacity = '1';
+                    follower.style.opacity = '1';
+                    dot.style.opacity = '1';
+                });
+            });
+            
+            function createRippleEffect(x, y) {
+                for (let i = 0; i < 2; i++) {
+                    setTimeout(() => {
+                        const ripple = document.createElement('div');
+                        ripple.style.position = 'fixed';
+                        ripple.style.left = x + 'px';
+                        ripple.style.top = y + 'px';
+                        ripple.style.width = '15px';
+                        ripple.style.height = '15px';
+                        ripple.style.border = '1px solid var(--cyber-blue)';
+                        ripple.style.borderRadius = '50%';
+                        ripple.style.pointerEvents = 'none';
+                        ripple.style.zIndex = '9996';
+                        ripple.style.transform = 'translate(-50%, -50%)';
+                        document.body.appendChild(ripple);
+                        
+                        ripple.animate([
+                            { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
+                            { transform: 'translate(-50%, -50%) scale(2)', opacity: 0 }
+                        ], {
+                            duration: 500,
+                            easing: 'ease-out'
+                        });
+                        
+                        setTimeout(() => ripple.remove(), 500);
+                    }, i * 100);
+                }
+            }
+            
+            // Theme toggle with quantum transition
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                
+                // Create quantum transition effect
+                createQuantumTransition();
+                
+                // Update icon
+                const icon = themeToggle.querySelector('i');
+                if (document.body.classList.contains('light-theme')) {
+                    icon.className = 'fas fa-sun';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    icon.className = 'fas fa-atom';
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+            
+            function createQuantumTransition() {
+                // Professional smooth fade transition
+                document.body.style.transition = 'background 0.4s ease, color 0.4s ease';
+                
+                // Remove transition after animation completes
+                setTimeout(() => {
+                    document.body.style.transition = '';
+                }, 400);
+            }
+            
+            // Language toggle
+            const langToggle = document.getElementById('langToggle');
+            let currentLang = 'en';
+            
+            langToggle.addEventListener('click', () => {
+                currentLang = currentLang === 'en' ? 'np' : 'en';
+                updateLanguage();
+            });
+            
+            function updateLanguage() {
+                document.querySelectorAll('[data-en], [data-np]').forEach(element => {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        const placeholder = element.getAttribute(`data-${currentLang}`);
+                        if (placeholder) element.placeholder = placeholder;
+                    } else if (element.hasAttribute(`data-${currentLang}`)) {
+                        element.textContent = element.getAttribute(`data-${currentLang}`);
+                    }
+                });
+            }
+            
+            // Resume Download
+            const resumeDownload = document.getElementById('resumeDownload');
+            if (resumeDownload) {
+                resumeDownload.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Create a download link (you can replace this with your actual resume file path)
+                    const link = document.createElement('a');
+                    link.href = '#'; // Replace with actual resume file path
+                    link.download = 'RIJAN_ARYAL_RESUME.pdf';
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    
+                    // Show notification
+                    if (typeof showMessageNotification === 'function') {
+                        showMessageNotification('Resume download initiated. Please add your resume file to enable download.');
+                    } else {
+                        alert('Resume download initiated. Please add your resume file to enable download.');
+                    }
+                    
+                    // Note: Uncomment the line below and add your resume file path
+                    // link.click();
+                    document.body.removeChild(link);
+                });
+            }
+            
+            // Load saved preferences
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeToggle.querySelector('i').className = 'fas fa-sun';
+            }
+            
+            // Scroll animations
+            const fadeElements = document.querySelectorAll('.fade-up');
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            // Prepare skill bars for animation
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width') || bar.style.width;
+                bar.style.setProperty('--target-width', width);
+                bar.style.width = '0';
+            });
+            
+            function checkScroll() {
+                fadeElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.85;
+                    
+                    if (isVisible) {
+                        el.classList.add('visible');
+                        
+                        // Add particle effect on scroll reveal
+                        if (!el.dataset.revealed) {
+                            createScrollParticles(el);
+                            el.dataset.revealed = 'true';
+                        }
+                    }
+                });
+                
+                // Animate skill bars when visible
+                skillBars.forEach(bar => {
+                    const rect = bar.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.85;
+                    
+                    if (isVisible && bar.style.width === '0px') {
+                        const targetWidth = bar.style.getPropertyValue('--target-width');
+                        setTimeout(() => {
+                            bar.style.width = targetWidth;
+                        }, 300);
+                    }
+                });
+            }
+            
+            function createScrollParticles(element) {
+                const rect = element.getBoundingClientRect();
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        createQuantumEffect(
+                            rect.left + Math.random() * rect.width,
+                            rect.top + Math.random() * rect.height
+                        );
+                    }, i * 50);
+                }
+            }
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav
+                        document.querySelectorAll('.nav-pixel').forEach(nav => nav.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Contact form with notification system
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const name = this.querySelector('input[type="text"]').value;
+                    const email = this.querySelector('input[type="email"]').value;
+                    const subject = this.querySelector('input[placeholder*="SUBJECT"]').value;
+                    const message = this.querySelector('textarea').value;
+                    
+                    // Create transmission effect
+                    createTransmissionEffect();
+                    
+                    // Show notification
+                    const messages = [
+                        "Quantum message entangled successfully!",
+                        "Transmission complete. Awaiting response...",
+                        "Message matrix deployed to cyberspace!",
+                        "Communication protocol established!",
+                        "Signal transmitted through quantum channels!"
+                    ];
+                    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                    
+                    setTimeout(() => {
+                        showMessageNotification(randomMessage);
+                        contactForm.reset();
+                    }, 800);
+                });
+            }
+            
+            function createTransmissionEffect() {
+                const transmission = document.createElement('div');
+                transmission.style.position = 'fixed';
+                transmission.style.top = '0';
+                transmission.style.left = '0';
+                transmission.style.width = '100%';
+                transmission.style.height = '100%';
+                transmission.style.background = 'conic-gradient(from 0deg, var(--cyber-blue), var(--matrix-green), var(--accent), var(--cyber-blue))';
+                transmission.style.zIndex = '99997';
+                transmission.style.opacity = '0';
+                transmission.style.pointerEvents = 'none';
+                document.body.appendChild(transmission);
+                
+                transmission.animate([
+                    { opacity: 0 },
+                    { opacity: 0.3 },
+                    { opacity: 0 }
+                ], {
+                    duration: 800,
+                    easing: 'ease-out'
+                });
+                
+                setTimeout(() => transmission.remove(), 800);
+            }
+            
+            // Initialize
+            window.addEventListener('load', () => {
+                checkScroll();
+                // Add particles to hero
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        createQuantumEffect(
+                            Math.random() * window.innerWidth,
+                            Math.random() * window.innerHeight
+                        );
+                    }, i * 100);
+                }
+            });
+            
+            window.addEventListener('scroll', checkScroll);
+            
+            // Scroll Progress Bar
+            const navScrollProgress = document.getElementById('navScrollProgress');
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            
+            function updateScrollProgress() {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.scrollY / windowHeight) * 100;
+                if (navScrollProgress) {
+                    navScrollProgress.style.width = scrolled + '%';
+                }
+                
+                // Hide scroll indicator when scrolling
+                if (scrollIndicator) {
+                    if (window.scrollY > 100) {
+                        scrollIndicator.classList.add('hidden');
+                    } else {
+                        scrollIndicator.classList.remove('hidden');
+                    }
+                }
+            }
+            
+            // Active Nav Highlighting on Scroll
+            function updateActiveNav() {
+                const sections = document.querySelectorAll('section[id]');
+                const navPixels = document.querySelectorAll('.nav-pixel');
+                const scrollPos = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        navPixels.forEach(nav => {
+                            nav.classList.remove('active');
+                            if (nav.getAttribute('href') === '#' + sectionId) {
+                                nav.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', () => {
+                updateScrollProgress();
+                updateActiveNav();
+            });
+            
+            // Initial call
+            updateScrollProgress();
+            updateActiveNav();
+            
+            // Dynamic background effects
+            function updateBackground() {
+                const scrollY = window.scrollY;
+                const bg = document.querySelector('.matrix-bg');
+                if (bg) {
+                    bg.style.transform = `translateY(${scrollY * 0.5}px) translateX(${scrollY * 0.2}px)`;
+                }
+            }
+            
+            window.addEventListener('scroll', updateBackground);
+            
+            // Interactive background particles
+            setInterval(() => {
+                if (Math.random() > 0.85) {
+                    createQuantumEffect(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight
+                    );
+                }
+            }, 1200);
+        });
+        // Skills animation with counting effect
+const skillBars = document.querySelectorAll('.skill-progress');
+const skillPercentages = document.querySelectorAll('.skill-percent');
+
+function animateSkillBar(bar, targetWidth) {
+    bar.style.width = targetWidth;
+}
+
+function animateCounter(element, targetValue) {
+    let current = 0;
+    const increment = targetValue / 50; // 50 steps for smooth animation
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= targetValue) {
+            element.textContent = targetValue + '%';
+            clearInterval(timer);
+            element.classList.add('visible');
+            element.classList.remove('animating');
+            element.style.color = 'var(--matrix-green)';
+        } else {
+            element.textContent = Math.floor(current) + '%';
+            // Color transition during animation
+            const progress = current / targetValue;
+            if (progress < 0.5) {
+                element.style.color = 'var(--cyber-blue)';
+            } else {
+                element.style.color = `rgb(${Math.floor(0 + (0 * (1 - progress)))}, ${Math.floor(255 * progress)}, ${Math.floor(157 * progress)})`;
+            }
+        }
+    }, 40); // 40ms per step = 2 seconds total
+}
+
+// Scroll animations
+function checkScroll() {
+    fadeElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.85;
+        
+        if (isVisible) {
+            el.classList.add('visible');
+            
+            // Add particle effect on scroll reveal
+            if (!el.dataset.revealed) {
+                createScrollParticles(el);
+                el.dataset.revealed = 'true';
+            }
+        }
+    });
+    
+    // Animate skill bars when visible
+    skillBars.forEach((bar, index) => {
+        const rect = bar.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.85;
+        const percentElement = skillPercentages[index];
+        
+        if (isVisible && !bar.dataset.animated && percentElement) {
+            // Get target value from data-width attribute
+            const targetWidth = bar.getAttribute('data-width');
+            if (!targetWidth) return;
+            
+            const targetValue = parseInt(targetWidth);
+            
+            // Ensure bar starts at 0
+            bar.style.width = '0';
+            percentElement.textContent = '0%';
+            percentElement.classList.add('animating');
+            percentElement.style.color = 'var(--cyber-blue)';
+            
+            // Animate the bar with color gradient
+            setTimeout(() => {
+                bar.style.width = targetWidth;
+                bar.style.background = `linear-gradient(90deg, var(--primary), var(--secondary), var(--cyber-blue))`;
+            }, 100);
+            
+            // Animate the counter from 0
+            setTimeout(() => {
+                animateCounter(percentElement, targetValue);
+            }, 300);
+            
+            bar.dataset.animated = 'true';
+            percentElement.dataset.target = targetValue;
+        }
+    });
+}
+// Mouse tracking for glow effect
+const glowPulse = document.getElementById('glowPulse');
+if (glowPulse) {
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        glowPulse.style.setProperty('--mouse-x', `${x}%`);
+        glowPulse.style.setProperty('--mouse-y', `${y}%`);
+    });
+}
+    </script>
+    <script>
+const cursor = document.getElementById("cursor");
+const dot = document.getElementById("cursorDot");
+
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+/* Smooth synced movement */
+function animateCursor() {
+  currentX += (mouseX - currentX) * 0.2;
+  currentY += (mouseY - currentY) * 0.2;
+
+  cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
+  dot.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+</script>
+
+</body>
+</html>
